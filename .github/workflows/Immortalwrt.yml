@@ -16,15 +16,15 @@ on:
       REPO_BRANCH:
         description: '天灵源码-请选择分支'
         required: true
-        default: 'openwrt-23.05'
+        default: 'openwrt-21.02'
         type: choice
         options:
-          - 'master'
-          - 'mt798x'
-          - 'openwrt-24.10'
           - 'openwrt-23.05'
           - 'openwrt-21.02'
-
+          - 'openwrt-18.06'
+          - 'openwrt-18.06-k5.4'
+          - 'master'
+          - 'mt798x'
       CONFIG_FILE:
         description: '请选择[seed文件夹内]的配置文件'
         required: true
@@ -131,7 +131,7 @@ jobs:
     - name: 检测文件和对比上游版本
       run: |
         cd ${GITHUB_WORKSPACE}
-        bash <(curl -fsSL https://raw.githubusercontent.com/Namia-R1/common/main/custom/first.sh)
+        bash <(curl -fsSL https://raw.githubusercontent.com/281677160/common/main/custom/first.sh)
         source ${GITHUB_WORKSPACE}/build/${{ env.FOLDER_NAME }}/settings.ini
         export INPUTS_REPO_BRANCH="${{ github.event.inputs.REPO_BRANCH }}"
         export INPUTS_CONFIG_FILE="${{ github.event.inputs.CONFIG_FILE }}"
